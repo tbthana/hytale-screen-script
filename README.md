@@ -5,5 +5,5 @@ Adapated [dotniphi/screen-server-scripts](https://github.com/dotniphi/screen-ser
 
 hytale.service for systemd
   - replace with your info
-server.sh in the folder above your /Server
 
+server.sh in the folder above your /Server
