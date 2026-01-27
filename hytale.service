@@ -1,0 +1,20 @@
+[Unit]
+Description=Hytale Server
+After=network.target
+
+[Service]
+User=[YOUR_USER]
+PIDFile=[YOUR_PATH]/Server/screen.pid
+WorkingDirectory=[YOUR_PATH]       
+
+ExecStart=[YOUR_PATH]/server.sh start
+ExecStartPost=/bin/sleep 1
+
+ExecStop=[YOUR_PATH]/server.sh stop
+
+Restart=on-failure
+RestartSec=10
+
+
+[Install]
+WantedBy=multi-user.target
