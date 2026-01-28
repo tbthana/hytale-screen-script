@@ -22,7 +22,7 @@ JAVA_PATH="java"
 JAVA_MEM_ARGS="-Xms4G -Xmx6G"
 JAVA_OTHER_ARGS="-XX:AOTCache=HytaleServer.aot"
 
-# Minecraft server config
+# Hytale server config
 SERVER_JAR="HytaleServer.jar"
 SERVER_ARGS="--assets ../Assets.zip --backup --backup-dir backups --backup-frequency 30"
 
@@ -148,6 +148,7 @@ start_in_fg(){
 
 # exec's the server (in other words: the server runs with our pid)
 srv_exec(){
+    cd "$SCRIPT_DIR"
 	# execute server
 	# shellcheck disable=2086  # some arguments must be split
     APPLIED_UPDATE=false
@@ -166,10 +167,13 @@ srv_exec(){
         APPLIED_UPDATE=true
     fi
 
+    cd "$SERVER_DIR"
+
     START_TIME=$(date +%s)
 	exec nice -n $NICE_ADJ "$JAVA_PATH" $JAVA_MEM_ARGS $JAVA_OTHER_ARGS -jar "$SERVER_JAR" $SERVER_ARGS
     EXIT_CODE=$?
     ELAPSED=$(( $(date +%s) - START_TIME ))
+
 }
 
 srv_runcmd() {
