@@ -148,7 +148,7 @@ start_in_fg(){
 
 # exec's the server (in other words: the server runs with our pid)
 srv_exec(){
-    cd "$SCRIPT_DIR"
+    cd "$EXEC_DIR"
 	# execute server
 	# shellcheck disable=2086  # some arguments must be split
     APPLIED_UPDATE=false
